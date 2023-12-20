@@ -34,13 +34,24 @@ function App() {
   // useState
   // useEffect 
 
+  // Inputtan değer okumak
+  // Listeyi jsx'de iterate etmek
   return (
     <>
-      <p>Toplam Tıklama Sayısı: {total}</p>
+      {/* <p>Toplam Tıklama Sayısı: {total}</p>
       <button onClick={() => {
         increase();
       }}>+</button>
-      <button onClick={decrease}>-</button>
+      <button onClick={decrease}>-</button> */}
+
+
+      <div className='center'>
+        <input type="text" />
+        <button type='button'>Ekle</button>
+        <ul>
+          <li>Todo 1 <button>X</button></li>
+        </ul>
+      </div>
     </>
   );
 }
