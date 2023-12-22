@@ -54,7 +54,7 @@ function App() {
       <button onClick={decrease}>-</button> */}
 
       {/* Component isimleri daima büyük harfle başlamalıdır */}
-      <Workshop func={exampleFunction} number={number} date={date} />
+      <Workshop workshopObject={{ date, number, exampleFunction }} />
     </>
   );
 }
@@ -62,3 +62,6 @@ function App() {
 // export const variable2 = 2;
 // const variable3 = 3;
 export default App;
+
+
+// JS Promise
