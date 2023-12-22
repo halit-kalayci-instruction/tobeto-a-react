@@ -39,6 +39,12 @@ function App() {
   // Listeyi jsx'de iterate etmek
   const [date, setDate] = useState(new Date());
   const [number, setNumber] = useState(10);
+
+  const exampleFunction = (arg1) => {
+    console.log(arg1);
+    console.log("exampleFunction çalıştı..");
+  }
+
   return (
     <>
       {/* <p>Toplam Tıklama Sayısı: {total}</p>
@@ -48,7 +54,7 @@ function App() {
       <button onClick={decrease}>-</button> */}
 
       {/* Component isimleri daima büyük harfle başlamalıdır */}
-      <Workshop number={number} date={date} />
+      <Workshop func={exampleFunction} number={number} date={date} />
     </>
   );
 }
