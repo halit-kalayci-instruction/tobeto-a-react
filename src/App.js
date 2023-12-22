@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from './Navbar';
+import Workshop from './Workshop';
 
 // Javascript Xml
 // JSX => Javascript + HTML => isim karışıklığı
@@ -44,14 +45,8 @@ function App() {
       }}>+</button>
       <button onClick={decrease}>-</button> */}
 
-
-      <div className='center'>
-        <input type="text" />
-        <button type='button'>Ekle</button>
-        <ul>
-          <li>Todo 1 <button>X</button></li>
-        </ul>
-      </div>
+      {/* Component isimleri daima büyük harfle başlamalıdır */}
+      <Workshop />
     </>
   );
 }
