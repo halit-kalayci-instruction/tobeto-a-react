@@ -59,5 +59,3 @@ function App() {
 // export const variable2 = 2;
 // const variable3 = 3;
 export default App;
-
-// 11:10
