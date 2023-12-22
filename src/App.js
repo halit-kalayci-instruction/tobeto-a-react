@@ -37,6 +37,8 @@ function App() {
 
   // Inputtan değer okumak
   // Listeyi jsx'de iterate etmek
+  const [date, setDate] = useState(new Date());
+  const [number, setNumber] = useState(10);
   return (
     <>
       {/* <p>Toplam Tıklama Sayısı: {total}</p>
@@ -46,7 +48,7 @@ function App() {
       <button onClick={decrease}>-</button> */}
 
       {/* Component isimleri daima büyük harfle başlamalıdır */}
-      <Workshop />
+      <Workshop number={number} date={date} />
     </>
   );
 }
