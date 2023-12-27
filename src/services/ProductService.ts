@@ -12,6 +12,11 @@ class ProductService {
 	getById(id: number) {
 		return axios.get<ProductModel>(API_URL + "/" + id);
 	}
+
+	delete(id: number) {
+		return axios.delete<ProductModel>(API_URL + "/" + id);
+	}
 }
 
+// import ederken direkt bir instance sunar.
 export default new ProductService();

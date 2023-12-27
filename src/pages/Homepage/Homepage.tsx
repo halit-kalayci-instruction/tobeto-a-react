@@ -12,6 +12,10 @@ const Homepage = (props: Props) => {
 		fetchProducts();
 	}, []);
 
+	const onProductDelete = (id: number) => {
+		setProducts(products.filter(i => i.id !== id));
+	};
+
 	const fetchProducts = () => {
 		ProductService.getAll().then((response: any) => {
 			setProducts(response.data.products);
@@ -23,7 +27,7 @@ const Homepage = (props: Props) => {
 			<div className="row">
 				{products.map(product => (
 					<div key={product.id} className="col-lg-3 col-md-6 col-12 mb-5">
-						<ProductCard product={product} />
+						<ProductCard onDelete={onProductDelete} product={product} />
 					</div>
 				))}
 			</div>
