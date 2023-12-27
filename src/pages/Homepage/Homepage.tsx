@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import {ProductService} from "../../services/ProductService";
+import ProductService from "../../services/ProductService";
 import {ProductModel} from "../../models/responses/ProductModel";
 
 type Props = {};
@@ -13,8 +13,7 @@ const Homepage = (props: Props) => {
 	}, []);
 
 	const fetchProducts = () => {
-		let service: ProductService = new ProductService();
-		service.getAll().then(response => {
+		ProductService.getAll().then((response: any) => {
 			setProducts(response.data.products);
 		});
 	};
