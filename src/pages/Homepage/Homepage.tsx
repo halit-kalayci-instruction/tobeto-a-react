@@ -24,7 +24,7 @@ const Homepage = (props: Props) => {
 			<div className="row">
 				{products.map(product => (
 					<div className="col-3">
-						<ProductCard />
+						<ProductCard product={product} />
 					</div>
 				))}
 			</div>
