@@ -23,7 +23,7 @@ const Homepage = (props: Props) => {
 		<div className="container">
 			<div className="row">
 				{products.map(product => (
-					<div className="col-3">
+					<div key={product.id} className="col-lg-3 col-md-6 col-12 mb-5">
 						<ProductCard product={product} />
 					</div>
 				))}
