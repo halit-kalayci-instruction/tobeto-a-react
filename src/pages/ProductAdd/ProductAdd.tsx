@@ -21,7 +21,18 @@ const ProductAdd = (props: Props) => {
 		title: Yup.string()
 			.required("Başlık alanı zorunludur.")
 			.min(2, "Başlık en az 2 haneden oluşmalıdır.")
-			.max(50),
+			.max(50)
+			.test(
+				"is-strong",
+				"Bu alan en az 1 büyük, 1 küçük harf ve 1 numerik değer içermelidir",
+				value => {
+					return (
+						/[a-z]/.test(value || "") &&
+						/[A-Z]/.test(value || "") &&
+						/[0-9]/.test(value || "")
+					);
+				},
+			),
 		description: Yup.string().required().min(5).max(300),
 		price: Yup.number().min(0),
 		stock: Yup.number().min(0).integer(),
@@ -48,16 +59,25 @@ const ProductAdd = (props: Props) => {
 					<div className="mb-3">
 						<label className="form-label">Ürün Açıklaması</label>
 						<Field name="description" type="text" className="form-control" />
+						<ErrorMessage name="description">
+							{message => <p className="text-danger">{message}</p>}
+						</ErrorMessage>
 					</div>
 
 					<div className="mb-3">
 						<label className="form-label">Ürün Fiyatı</label>
 						<Field name="price" type="number" className="form-control" />
+						<ErrorMessage name="price">
+							{message => <p className="text-danger">{message}</p>}
+						</ErrorMessage>
 					</div>
 
 					<div className="mb-3">
 						<label className="form-label">Ürün Stok</label>
 						<Field name="stock" type="number" className="form-control" />
+						<ErrorMessage name="stock">
+							{message => <p className="text-danger">{message}</p>}
+						</ErrorMessage>
 					</div>
 
 					<button type="submit" className="btn btn-primary">
