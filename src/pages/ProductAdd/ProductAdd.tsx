@@ -1,5 +1,5 @@
-import {Formik, Form, Field} from "formik";
-import React from "react";
+import {Formik, Form, Field, ErrorMessage} from "formik";
+import * as Yup from "yup";
 
 type Props = {};
 
@@ -9,7 +9,6 @@ interface ProductAddForm {
 	price: number;
 	stock: number;
 }
-// 10:10
 const ProductAdd = (props: Props) => {
 	const initialValues: ProductAddForm = {
 		title: "",
@@ -18,9 +17,20 @@ const ProductAdd = (props: Props) => {
 		stock: 0,
 	};
 
+	const validationSchema = Yup.object({
+		title: Yup.string()
+			.required("Başlık alanı zorunludur.")
+			.min(2, "Başlık en az 2 haneden oluşmalıdır.")
+			.max(50),
+		description: Yup.string().required().min(5).max(300),
+		price: Yup.number().min(0),
+		stock: Yup.number().min(0).integer(),
+	});
+
 	return (
 		<div className="container mt-5">
 			<Formik
+				validationSchema={validationSchema}
 				initialValues={initialValues}
 				onSubmit={values => {
 					console.log(values);
@@ -30,6 +40,9 @@ const ProductAdd = (props: Props) => {
 					<div className="mb-3">
 						<label className="form-label">Ürün Adı</label>
 						<Field name="title" type="text" className="form-control" />
+						<ErrorMessage name="title">
+							{message => <p className="text-danger">{message}</p>}
+						</ErrorMessage>
 					</div>
 
 					<div className="mb-3">
