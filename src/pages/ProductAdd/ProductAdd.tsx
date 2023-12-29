@@ -3,8 +3,15 @@ import React from "react";
 
 type Props = {};
 
+interface ProductAddForm {
+	title: string;
+	description: string;
+	price: number;
+	stock: number;
+}
+// 10:10
 const ProductAdd = (props: Props) => {
-	const initialValues = {
+	const initialValues: ProductAddForm = {
 		title: "",
 		description: "",
 		price: 0,
