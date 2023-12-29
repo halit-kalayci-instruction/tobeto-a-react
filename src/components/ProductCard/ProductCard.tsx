@@ -1,7 +1,7 @@
 import React from "react";
 import {ProductModel} from "../../models/responses/ProductModel";
 import {Link} from "react-router-dom";
-import ProductService from "../../services/ProductService";
+import ProductService from "../../services/productService";
 import {HttpStatusCode} from "axios";
 
 type Props = {

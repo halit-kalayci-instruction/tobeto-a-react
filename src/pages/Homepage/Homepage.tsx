@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import ProductService from "../../services/ProductService";
+import ProductService from "../../services/productService";
 import {ProductModel} from "../../models/responses/ProductModel";
 
 type Props = {};
