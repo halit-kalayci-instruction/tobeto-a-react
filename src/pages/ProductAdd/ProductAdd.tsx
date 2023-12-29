@@ -10,6 +10,7 @@ interface ProductAddForm {
 	description: string;
 	price: number;
 	stock: number;
+	colorId: number;
 }
 const ProductAdd = (props: Props) => {
 	const initialValues: ProductAddForm = {
@@ -17,6 +18,7 @@ const ProductAdd = (props: Props) => {
 		description: "",
 		price: 0,
 		stock: 0,
+		colorId: 0,
 	};
 
 	const validationSchema = Yup.object({
@@ -30,8 +32,9 @@ const ProductAdd = (props: Props) => {
 				passwordRule,
 			),
 		description: Yup.string().required().min(5).max(300),
-		price: Yup.number().min(0),
-		stock: Yup.number().min(0).integer(),
+		price: Yup.number().min(1),
+		stock: Yup.number().min(1).integer(),
+		colorId: Yup.number().min(1),
 	});
 
 	return (
@@ -48,6 +51,15 @@ const ProductAdd = (props: Props) => {
 					<FormikInput name="description" label="Ürün Açıklaması" />
 					<FormikInput name="price" label="Ürün Fiyatı" type="number" />
 					<FormikInput name="stock" label="Ürün Stok" type="number" />
+
+					<Field as="select" className="form-select" name="colorId">
+						<option value={0}>Bir renk seçin</option>
+						<option value={1}>Kırmızı</option>
+						<option value={2}>Siyah</option>
+						<option value={3}>Beyaz</option>
+					</Field>
+					<ErrorMessage name="colorId"></ErrorMessage>
+
 					<button type="submit" className="btn btn-primary">
 						Kaydet
 					</button>
