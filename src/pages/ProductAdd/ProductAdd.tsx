@@ -1,6 +1,7 @@
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import {passwordRule} from "../../utils/validation/customValidationRules";
+import FormikInput from "../../components/FormikInput/FormikInput";
 
 type Props = {};
 
@@ -43,38 +44,10 @@ const ProductAdd = (props: Props) => {
 				}}
 			>
 				<Form>
-					<div className="mb-3">
-						<label className="form-label">Ürün Adı</label>
-						<Field name="title" type="text" className="form-control" />
-						<ErrorMessage name="title">
-							{message => <p className="text-danger">{message}</p>}
-						</ErrorMessage>
-					</div>
-
-					<div className="mb-3">
-						<label className="form-label">Ürün Açıklaması</label>
-						<Field name="description" type="text" className="form-control" />
-						<ErrorMessage name="description">
-							{message => <p className="text-danger">{message}</p>}
-						</ErrorMessage>
-					</div>
-
-					<div className="mb-3">
-						<label className="form-label">Ürün Fiyatı</label>
-						<Field name="price" type="number" className="form-control" />
-						<ErrorMessage name="price">
-							{message => <p className="text-danger">{message}</p>}
-						</ErrorMessage>
-					</div>
-
-					<div className="mb-3">
-						<label className="form-label">Ürün Stok</label>
-						<Field name="stock" type="number" className="form-control" />
-						<ErrorMessage name="stock">
-							{message => <p className="text-danger">{message}</p>}
-						</ErrorMessage>
-					</div>
-
+					<FormikInput name="title" label="Ürün Adı" />
+					<FormikInput name="description" label="Ürün Açıklaması" />
+					<FormikInput name="price" label="Ürün Fiyatı" type="number" />
+					<FormikInput name="stock" label="Ürün Stok" type="number" />
 					<button type="submit" className="btn btn-primary">
 						Kaydet
 					</button>
