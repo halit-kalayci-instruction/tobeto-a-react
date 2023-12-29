@@ -9,7 +9,7 @@ type Props = {
 	onDelete: (id: number) => void;
 	title?: string; // (opsiyonel)
 };
-
+// Formik - YUP
 const ProductCard = (props: Props) => {
 	const deleteProduct = async () => {
 		try {
