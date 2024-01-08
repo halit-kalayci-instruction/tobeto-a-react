@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {configureStore} from "./store/configureStore";
+import {AuthProvider} from "./contexts/AuthContext";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement,
@@ -14,11 +15,15 @@ const root = ReactDOM.createRoot(
 const globalStore = configureStore();
 
 root.render(
-	<Provider store={globalStore}>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
-	</Provider>,
+	// Context
+	<AuthProvider>
+		{/* Redux */}
+		<Provider store={globalStore}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</Provider>
+	</AuthProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../contexts/AuthContext";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
 	const cartState = useSelector((state: any) => state.cart);
 	console.log(cartState);
+
+	const authContext: any = useContext(AuthContext);
+	console.log(authContext);
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -37,6 +41,25 @@ const Navbar = (props: Props) => {
 								Ürün Ekle
 							</Link>
 						</li>
+						{!authContext.isAuthenticated && (
+							<li className="nav-item">
+								<button
+									className="nav-link"
+									onClick={() => {
+										authContext.setIsAuthenticated(true);
+									}}
+								>
+									Giriş Yap
+								</button>
+							</li>
+						)}
+						{authContext.isAuthenticated && (
+							<li className="nav-item">
+								<Link className="nav-link" to={"/product-add"}>
+									Hoşgeldiniz
+								</Link>
+							</li>
+						)}
 					</ul>
 					<form className="d-flex" role="search">
 						<input
