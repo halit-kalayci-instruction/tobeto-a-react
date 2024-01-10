@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext";
@@ -7,10 +7,11 @@ type Props = {};
 
 const Navbar = (props: Props) => {
 	const cartState = useSelector((state: any) => state.cart);
-	console.log(cartState);
-
 	const authContext: any = useContext(AuthContext);
-	console.log(authContext);
+
+	useEffect(() => {
+		console.log(cartState);
+	}, []);
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary">

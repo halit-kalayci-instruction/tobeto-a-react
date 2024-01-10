@@ -8,7 +8,9 @@ interface CartItem {
 
 const cartSlice = createSlice({
 	name: "cart",
-	initialState: {cartItems: [] as CartItem[]},
+	initialState: {
+		cartItems: JSON.parse(localStorage.getItem("cart") || "[]") || [],
+	},
 	reducers: {
 		addToCart: (state, action) => {
 			let existingItem = state.cartItems.find(
@@ -20,14 +22,17 @@ const cartSlice = createSlice({
 			} else {
 				state.cartItems.push({product: action.payload.product, quantity: 1});
 			}
+			localStorage.setItem("cart", JSON.stringify(state.cartItems));
 		},
 		removeFromCart: (state, action) => {
 			state.cartItems = state.cartItems.filter(
 				(i: any) => i.product.id !== action.payload.product.id,
 			);
+			localStorage.setItem("cart", JSON.stringify(state.cartItems));
 		},
 		clearCart: state => {
 			state.cartItems = [];
+			localStorage.setItem("cart", JSON.stringify(state.cartItems));
 		},
 	},
 });
