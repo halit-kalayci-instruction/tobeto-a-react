@@ -6,6 +6,9 @@ import {AuthContext} from "../../contexts/AuthContext";
 type Props = {};
 
 const Navbar = (props: Props) => {
+	const cartState = useSelector((state: any) => state.cart);
+	console.log(cartState);
+
 	const authContext: any = useContext(AuthContext);
 	console.log(authContext);
 
@@ -38,6 +41,7 @@ const Navbar = (props: Props) => {
 								Ürün Ekle
 							</Link>
 						</li>
+
 						{!authContext.isAuthenticated && (
 							<li className="nav-item">
 								<button
@@ -57,6 +61,18 @@ const Navbar = (props: Props) => {
 								</Link>
 							</li>
 						)}
+						<li className="nav-item">
+							<button
+								type="button"
+								className="btn btn-primary position-relative"
+							>
+								Sepet
+								<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+									{cartState.cartItems.length}
+									<span className="visually-hidden">unread messages</span>
+								</span>
+							</button>
+						</li>
 					</ul>
 					<form className="d-flex" role="search">
 						<input
