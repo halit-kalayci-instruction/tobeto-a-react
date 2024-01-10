@@ -6,9 +6,6 @@ import {AuthContext} from "../../contexts/AuthContext";
 type Props = {};
 
 const Navbar = (props: Props) => {
-	const cartState = useSelector((state: any) => state.cart);
-	console.log(cartState);
-
 	const authContext: any = useContext(AuthContext);
 	console.log(authContext);
 

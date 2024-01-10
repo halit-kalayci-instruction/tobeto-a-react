@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import ProductService from "../../services/productService";
 import {HttpStatusCode} from "axios";
 import {useDispatch} from "react-redux";
-import {addToCart} from "../../store/actions/cartActions";
 
 type Props = {
 	product: ProductModel;
@@ -25,10 +24,7 @@ const ProductCard = (props: Props) => {
 		}
 	};
 
-	const dispatch = useDispatch();
-	const addProductToCart = () => {
-		dispatch(addToCart(props.product));
-	};
+	const addProductToCart = () => {};
 
 	return (
 		<div className="card">

@@ -5,20 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import {configureStore} from "./store/configureStore";
 import {AuthProvider} from "./contexts/AuthContext";
+import {store} from "./store/configureStore";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement,
 );
 
-const globalStore = configureStore();
-
 root.render(
 	// Context
 	<AuthProvider>
 		{/* Redux */}
-		<Provider store={globalStore}>
+		<Provider store={store}>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
