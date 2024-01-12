@@ -5,7 +5,6 @@ interface CartItem {
 	product: ProductModel;
 	quantity: number;
 }
-
 const cartSlice = createSlice({
 	name: "cart",
 	initialState: {

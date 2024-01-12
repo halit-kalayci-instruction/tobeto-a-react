@@ -17,7 +17,9 @@ const Homepage = (props: Props) => {
 	};
 
 	const fetchProducts = () => {
+		console.log("İstek homepageden atılıyor..");
 		ProductService.getAll().then((response: any) => {
+			console.log("Cevap homepage'e ulaştı.");
 			setProducts(response.data.products);
 		});
 	};
