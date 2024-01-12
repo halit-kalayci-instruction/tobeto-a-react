@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import toastr from "toastr";
 const axiosInstance = axios.create({
 	baseURL: "https://dummyjson.com/",
 });
@@ -15,9 +15,8 @@ axiosInstance.interceptors.response.use(
 		return value;
 	},
 	error => {
-		if (error.type == "BusinessException") {
-			// error.message => toastr ile göster
-		}
+		toastr.error(error.response.data.message);
+		return error;
 	},
 );
 

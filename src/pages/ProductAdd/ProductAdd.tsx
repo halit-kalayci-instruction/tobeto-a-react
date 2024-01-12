@@ -4,6 +4,7 @@ import {passwordRule} from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/FormikInput/FormikInput";
 import ProductService from "../../services/productService";
 import {useEffect} from "react";
+import AuthService from "../../services/authService";
 
 type Props = {};
 
@@ -17,6 +18,9 @@ interface ProductAddForm {
 const ProductAdd = (props: Props) => {
 	useEffect(() => {
 		ProductService.getById(1).then(response => {});
+		AuthService.login({username: "kminchelle", password: "123"}).then(
+			response => console.log(response),
+		);
 	}, []);
 
 	const initialValues: ProductAddForm = {
